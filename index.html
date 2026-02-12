@@ -6,6 +6,9 @@
 <title>Will You Be My Valentine? 💖</title>
 
 <style>
+  html,body{
+    touch-action: manipulation;
+  }
 body {
   margin:0;
   font-family:'Poppins',sans-serif;
@@ -139,10 +142,13 @@ button:hover {
 
   <h3>Our Memories 📸</h3>
   <div class="gallery">
-    <img src="photo1.jpg">
-    <img src="photo2.jpg">
-    <img src="photo3.jpg">
-    <img src="photo4.jpg">
+    <img src="photo1.jpeg">
+    <img src="photo2.jpeg">
+    <img src="photo3.jpeg">
+    <img src="photo4.jpeg">
+    <img src="photo5.jpeg">
+    <img src="photo6.jpeg">
+    <img src="photo7'jpeg">
   </div>
 
   <h3>Send Me Kisses 💋</h3>
@@ -171,6 +177,12 @@ noBtn.addEventListener("mouseover",()=>{
   const y=Math.random()*200-100;
   noBtn.style.transform=`translate(${x}px,${y}px)`;
 });
+
+noBtn.addEventListener("touchstart",()=> {
+  const x = Math.random()*200-100;
+  const y=Math.random()*200-100;
+  noBtn.style.transform=`translate(${x}px,${y}px)`;
+} )
 
 /* YES click */
 yesBtn.addEventListener("click",()=>{

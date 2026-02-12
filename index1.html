@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Will You Be My Valentine? 💖</title>
+
+<style>
+    html, body {
+  touch-action: manipulation;
+}
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #ff758c, #ff7eb3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+.container {
+  background: rgba(255,255,255,0.15);
+  padding: 30px;
+  border-radius: 20px;
+  text-align: center;
+  max-width: 420px;
+  width: 90%;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+button {
+  padding: 12px 22px;
+  border: none;
+  border-radius: 25px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#yesBtn { background:#ff4d6d; color:white; }
+#noBtn { background:white; color:#ff4d6d; position:relative; }
+
+button:hover { transform: scale(1.1); }
+
+.hidden { display:none; }
+
+.gallery {
+  margin-top:20px;
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
+}
+
+.gallery img {
+  width:100%;
+  border-radius:12px;
+  transition:0.3s;
+}
+
+.gallery img:hover { transform:scale(1.05); }
+
+.kiss-game {
+  margin-top:25px;
+}
+
+.kiss-btn {
+  margin-top:10px;
+  background:white;
+  color:#ff4d6d;
+}
+
+.kiss-counter {
+  font-size:18px;
+  margin-top:10px;
+}
+
+.floating-kiss {
+  position: fixed;
+  font-size: 28px;
+  pointer-events: none;
+  animation: floatUp 1s ease forwards;
+}
+
+@keyframes floatUp {
+  0% { opacity:1; transform:translateY(0); }
+  100% { opacity:0; transform:translateY(-60px); }
+}
+
+.special-message {
+  margin-top:15px;
+  font-weight:bold;
+  animation: fadeIn 1s ease;
+}
+
+@keyframes fadeIn {
+  from {opacity:0;}
+  to {opacity:1;}
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<h1>Hey Ishu ❤️</h1>
+<p>From the moment you entered my life, everything became beautiful ✨</p>
+<h2>Will you be my Valentine mu? 💘</h2>
+
+<div>
+  <button id="yesBtn">YES 😍</button>
+  <button id="noBtn">NO 🙈</button>
+</div>
+
+<div id="celebration" class="hidden">
+
+  <h1>Yayyyy Ishu!!! 💖</h1>
+  <p>You just made me the happiest person 🥰</p>
+
+  <h3>Our Beautiful Memories 📸</h3>
+
+  <div class="gallery">
+    <img src="photo1.jpg">
+    <img src="photo2.jpg">
+    <img src="photo3.jpg">
+    <img src="photo4.jpg">
+  </div>
+
+  <!-- KISS GAME -->
+  <div class="kiss-game">
+    <h3>Special Game 💋</h3>
+    <p>Tap to Kiss Sathish 😘</p>
+    <button class="kiss-btn" id="kissBtn">Give Kiss 💋</button>
+    <div class="kiss-counter">Kisses: <span id="kissCount">0</span></div>
+    <div id="specialMessage" class="special-message hidden">
+      That’s a lot of love 😍 I owe you unlimited hugs now ❤️
+    </div>
+  </div>
+
+</div>
+
+</div>
+
+<script>
+const noBtn = document.getElementById("noBtn");
+const yesBtn = document.getElementById("yesBtn");
+const celebration = document.getElementById("celebration");
+const kissBtn = document.getElementById("kissBtn");
+const kissCount = document.getElementById("kissCount");
+const specialMessage = document.getElementById("specialMessage");
+
+let count = 0;
+
+noBtn.addEventListener("mouseover", () => {
+  const x = Math.random()*200 - 100;
+  const y = Math.random()*200 - 100;
+  noBtn.style.transform = `translate(${x}px, ${y}px)`;
+});
+noBtn.addEventListener("touchstart", () => {
+  const x = Math.random()*200 - 100;
+  const y = Math.random()*200 - 100;
+  noBtn.style.transform = `translate(${x}px, ${y}px)`;
+})
+
+
+yesBtn.addEventListener("click", () => {
+  celebration.classList.remove("hidden");
+});
+
+kissBtn.addEventListener("click", (e) => {
+  count++;
+  kissCount.textContent = count;
+
+  const kiss = document.createElement("div");
+  kiss.className = "floating-kiss";
+  kiss.textContent = "💋";
+  const randomX = Math.random() * window.innerWidth;
+  const randomY = Math.random() * window.innerHeight;
+  kiss.style.left = randomX + "px";
+  kiss.style.top = randomY + "px";
+  document.body.appendChild(kiss);
+
+  setTimeout(()=>kiss.remove(),1000);
+
+  if(count >= 10){
+    specialMessage.classList.remove("hidden");
+  }
+});
+</script>
+
+</body>
+</html>

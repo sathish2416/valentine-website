@@ -2,50 +2,79 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
 <title>Will You Be My Valentine? 💖</title>
 
 <style>
-    html, body {
-  touch-action: manipulation;
-}
 body {
-  margin: 0;
-  font-family: 'Poppins', sans-serif;
-  background: linear-gradient(135deg, #ff758c, #ff7eb3);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  color: #fff;
-  overflow-x: hidden;
+  margin:0;
+  font-family:'Poppins',sans-serif;
+  background: linear-gradient(135deg,#ff758c,#ff7eb3);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:100vh;
+  overflow:hidden;
+  color:white;
 }
 
+/* Floating background hearts */
+.bg-heart {
+  position:fixed;
+  font-size:20px;
+  opacity:0.3;
+  animation: float 6s linear infinite;
+}
+
+@keyframes float {
+  from {transform:translateY(100vh);}
+  to {transform:translateY(-10vh);}
+}
+
+/* Glass Card */
 .container {
+  backdrop-filter: blur(15px);
   background: rgba(255,255,255,0.15);
-  padding: 30px;
-  border-radius: 20px;
-  text-align: center;
-  max-width: 420px;
-  width: 90%;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  padding:30px;
+  border-radius:25px;
+  text-align:center;
+  width:90%;
+  max-width:420px;
+  box-shadow:0 10px 40px rgba(0,0,0,0.3);
+  animation: fadeIn 1.2s ease;
+}
+
+@keyframes fadeIn {
+  from {opacity:0; transform:translateY(20px);}
+  to {opacity:1; transform:translateY(0);}
 }
 
 button {
-  padding: 12px 22px;
-  border: none;
-  border-radius: 25px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: 0.3s;
+  padding:12px 25px;
+  border:none;
+  border-radius:30px;
+  font-size:16px;
+  cursor:pointer;
+  margin:10px;
+  transition:0.3s;
 }
 
-#yesBtn { background:#ff4d6d; color:white; }
-#noBtn { background:white; color:#ff4d6d; position:relative; }
+#yesBtn {
+  background:white;
+  color:#ff4d6d;
+  font-weight:bold;
+}
 
-button:hover { transform: scale(1.1); }
+#noBtn {
+  background:#ff4d6d;
+  color:white;
+}
 
-.hidden { display:none; }
+button:hover {
+  transform:scale(1.1);
+}
+
+.hidden {display:none;}
 
 .gallery {
   margin-top:20px;
@@ -56,37 +85,32 @@ button:hover { transform: scale(1.1); }
 
 .gallery img {
   width:100%;
-  border-radius:12px;
-  transition:0.3s;
+  border-radius:15px;
+  transition:0.4s;
 }
 
-.gallery img:hover { transform:scale(1.05); }
+.gallery img:hover {
+  transform:scale(1.08);
+  box-shadow:0 0 15px white;
+}
 
-.kiss-game {
-  margin-top:25px;
+/* Kiss */
+.floating-kiss {
+  position:fixed;
+  font-size:28px;
+  animation: explode 1s ease forwards;
+  pointer-events:none;
+}
+
+@keyframes explode {
+  0% {opacity:1; transform:scale(1);}
+  100% {opacity:0; transform:scale(2) translateY(-50px);}
 }
 
 .kiss-btn {
-  margin-top:10px;
   background:white;
   color:#ff4d6d;
-}
-
-.kiss-counter {
-  font-size:18px;
-  margin-top:10px;
-}
-
-.floating-kiss {
-  position: fixed;
-  font-size: 28px;
-  pointer-events: none;
-  animation: floatUp 1s ease forwards;
-}
-
-@keyframes floatUp {
-  0% { opacity:1; transform:translateY(0); }
-  100% { opacity:0; transform:translateY(-60px); }
+  margin-top:15px;
 }
 
 .special-message {
@@ -94,33 +118,25 @@ button:hover { transform: scale(1.1); }
   font-weight:bold;
   animation: fadeIn 1s ease;
 }
-
-@keyframes fadeIn {
-  from {opacity:0;}
-  to {opacity:1;}
-}
 </style>
 </head>
 
 <body>
+
 <div class="container">
 
 <h1>Hey Ishu ❤️</h1>
-<p>From the moment you entered my life, everything became beautiful ✨</p>
-<h2>Will you be my Valentine mu? 💘</h2>
+<p>You make my world brighter every single day ✨</p>
+<h2>Will you be my Valentine? 💘</h2>
 
-<div>
-  <button id="yesBtn">YES 😍</button>
-  <button id="noBtn">NO 🙈</button>
-</div>
+<button id="yesBtn">YES 😍</button>
+<button id="noBtn">NO 🙈</button>
 
 <div id="celebration" class="hidden">
+  <h1>She Said YES!!! 💖</h1>
+  <p>I’m the luckiest person alive 🥰</p>
 
-  <h1>Yayyyy Ishu!!! 💖</h1>
-  <p>You just made me the happiest person 🥰</p>
-
-  <h3>Our Beautiful Memories 📸</h3>
-
+  <h3>Our Memories 📸</h3>
   <div class="gallery">
     <img src="photo1.jpg">
     <img src="photo2.jpg">
@@ -128,66 +144,83 @@ button:hover { transform: scale(1.1); }
     <img src="photo4.jpg">
   </div>
 
-  <!-- KISS GAME -->
-  <div class="kiss-game">
-    <h3>Special Game 💋</h3>
-    <p>Tap to Kiss Sathish 😘</p>
-    <button class="kiss-btn" id="kissBtn">Give Kiss 💋</button>
-    <div class="kiss-counter">Kisses: <span id="kissCount">0</span></div>
-    <div id="specialMessage" class="special-message hidden">
-      That’s a lot of love 😍 I owe you unlimited hugs now ❤️
-    </div>
+  <h3>Send Me Kisses 💋</h3>
+  <button class="kiss-btn" id="kissBtn">Kiss Me 💋</button>
+  <div>Kisses: <span id="kissCount">0</span></div>
+  <div id="specialMessage" class="special-message hidden">
+    That’s unlimited love unlocked ❤️🔥
   </div>
-
 </div>
 
 </div>
 
 <script>
-const noBtn = document.getElementById("noBtn");
-const yesBtn = document.getElementById("yesBtn");
-const celebration = document.getElementById("celebration");
-const kissBtn = document.getElementById("kissBtn");
-const kissCount = document.getElementById("kissCount");
-const specialMessage = document.getElementById("specialMessage");
+const noBtn=document.getElementById("noBtn");
+const yesBtn=document.getElementById("yesBtn");
+const celebration=document.getElementById("celebration");
+const kissBtn=document.getElementById("kissBtn");
+const kissCount=document.getElementById("kissCount");
+const specialMessage=document.getElementById("specialMessage");
 
-let count = 0;
+let count=0;
 
-noBtn.addEventListener("mouseover", () => {
-  const x = Math.random()*200 - 100;
-  const y = Math.random()*200 - 100;
-  noBtn.style.transform = `translate(${x}px, ${y}px)`;
+/* Running NO button */
+noBtn.addEventListener("mouseover",()=>{
+  const x=Math.random()*200-100;
+  const y=Math.random()*200-100;
+  noBtn.style.transform=`translate(${x}px,${y}px)`;
 });
-noBtn.addEventListener("touchstart", () => {
-  const x = Math.random()*200 - 100;
-  const y = Math.random()*200 - 100;
-  noBtn.style.transform = `translate(${x}px, ${y}px)`;
-})
 
-
-yesBtn.addEventListener("click", () => {
+/* YES click */
+yesBtn.addEventListener("click",()=>{
   celebration.classList.remove("hidden");
+  confettiBurst();
 });
 
-kissBtn.addEventListener("click", (e) => {
+/* Kiss Game */
+kissBtn.addEventListener("click",()=>{
   count++;
-  kissCount.textContent = count;
+  kissCount.textContent=count;
 
-  const kiss = document.createElement("div");
-  kiss.className = "floating-kiss";
-  kiss.textContent = "💋";
-  const randomX = Math.random() * window.innerWidth;
-  const randomY = Math.random() * window.innerHeight;
-  kiss.style.left = randomX + "px";
-  kiss.style.top = randomY + "px";
-  document.body.appendChild(kiss);
+  for(let i=0;i<3;i++){
+    const kiss=document.createElement("div");
+    kiss.className="floating-kiss";
+    kiss.textContent="💋";
 
-  setTimeout(()=>kiss.remove(),1000);
+    kiss.style.left=Math.random()*window.innerWidth+"px";
+    kiss.style.top=Math.random()*window.innerHeight+"px";
 
-  if(count >= 10){
+    document.body.appendChild(kiss);
+    setTimeout(()=>kiss.remove(),1000);
+  }
+
+  if(count>=10){
     specialMessage.classList.remove("hidden");
   }
 });
+
+/* Floating hearts background */
+setInterval(()=>{
+  const heart=document.createElement("div");
+  heart.className="bg-heart";
+  heart.textContent="💖";
+  heart.style.left=Math.random()*100+"vw";
+  document.body.appendChild(heart);
+  setTimeout(()=>heart.remove(),6000);
+},800);
+
+/* Simple confetti */
+function confettiBurst(){
+  for(let i=0;i<20;i++){
+    const conf=document.createElement("div");
+    conf.className="floating-kiss";
+    conf.textContent="💗";
+    conf.style.left=Math.random()*window.innerWidth+"px";
+    conf.style.top=Math.random()*window.innerHeight+"px";
+    document.body.appendChild(conf);
+    setTimeout(()=>conf.remove(),1000);
+  }
+}
 </script>
 
 </body>

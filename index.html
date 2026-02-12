@@ -78,8 +78,9 @@ button:hover { transform: scale(1.1); }
 }
 
 .floating-kiss {
-  position:absolute;
-  font-size:24px;
+  position: fixed;
+  font-size: 28px;
+  pointer-events: none;
   animation: floatUp 1s ease forwards;
 }
 
@@ -175,8 +176,10 @@ kissBtn.addEventListener("click", (e) => {
   const kiss = document.createElement("div");
   kiss.className = "floating-kiss";
   kiss.textContent = "💋";
-  kiss.style.left = e.pageX + "px";
-  kiss.style.top = e.pageY + "px";
+  const randomX = Math.random() * window.innerWidth;
+  const randomY = Math.random() * window.innerHeight;
+  kiss.style.left = randomX + "px";
+  kiss.style.top = randomY + "px";
   document.body.appendChild(kiss);
 
   setTimeout(()=>kiss.remove(),1000);
